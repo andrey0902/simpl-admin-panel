@@ -1,0 +1,495 @@
+@import '~@angular/material/theming';
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+//@import '../app/users/board/board.component.scss';
+@import '../app/core/sidemenu/sidemenu.component.scss';
+@import '../app/core/sidemenu-item/sidemenu-item.component.scss';
+//@import '../app/dashboard-widget/dashcard/dashcard.component.scss';
+//@import '../app/dashboard-widget/profile-card/profile-card.component.scss';
+//@import '../app/dashboard-widget/round-progressbar/round-progressbar.component.scss';
+//@import '../app/dashboard-widget/sales-list/sales-list.component.scss';
+
+
+
+/*scroll*/
+
+/*
+ * Container style
+ */
+.ps {
+  overflow: hidden !important;
+  overflow-anchor: none;
+  -ms-overflow-style: none;
+  touch-action: auto;
+  -ms-touch-action: auto;
+}
+
+/*
+ * Scrollbar rail styles
+ */
+.ps__rail-x {
+  display: none;
+  opacity: 0;
+  transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  height: 15px;
+  /* there must be 'bottom' or 'top' for ps__rail-x */
+  bottom: 0px;
+  /* please don't change 'position' */
+  position: absolute;
+}
+
+.ps__rail-y {
+  display: none;
+  opacity: 0;
+  transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  width: 15px;
+  /* there must be 'right' or 'left' for ps__rail-y */
+  right: 0;
+  /* please don't change 'position' */
+  position: absolute;
+}
+
+.ps--active-x > .ps__rail-x,
+.ps--active-y > .ps__rail-y {
+  display: block;
+  background-color: transparent;
+}
+
+.ps:hover > .ps__rail-x,
+.ps:hover > .ps__rail-y,
+.ps--focus > .ps__rail-x,
+.ps--focus > .ps__rail-y,
+.ps--scrolling-x > .ps__rail-x,
+.ps--scrolling-y > .ps__rail-y {
+  opacity: 0.6;
+}
+
+.ps .ps__rail-x:hover,
+.ps .ps__rail-y:hover,
+.ps .ps__rail-x:focus,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-x.ps--clicking,
+.ps .ps__rail-y.ps--clicking {
+  background-color: #eee;
+  opacity: 0.9;
+}
+
+/*
+ * Scrollbar thumb styles
+ */
+.ps__thumb-x {
+  background-color: #aaa;
+  border-radius: 6px;
+  transition: background-color .2s linear, height .2s ease-in-out;
+  -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+  height: 6px;
+  /* there must be 'bottom' for ps__thumb-x */
+  bottom: 2px;
+  /* please don't change 'position' */
+  position: absolute;
+}
+
+.ps__thumb-y {
+  background-color: #aaa;
+  border-radius: 6px;
+  transition: background-color .2s linear, width .2s ease-in-out;
+  -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+  width: 6px;
+  /* there must be 'right' for ps__thumb-y */
+  right: 2px;
+  /* please don't change 'position' */
+  position: absolute;
+}
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x {
+  background-color: #999;
+  height: 11px;
+}
+
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y {
+  background-color: #999;
+  width: 11px;
+}
+
+/* MS supports */
+@supports (-ms-overflow-style: none) {
+  .ps {
+    overflow: auto !important;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ps {
+    overflow: auto !important;
+  }
+}
+
+/*scroll*/
+
+
+
+@mixin mat-icon($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  color:white;
+}
+
+@mixin mat-headline {
+  margin: 0px;
+  color: white;
+}
+
+@mixin dashcard($theme) {
+
+  .dashcard {
+    margin: 10px 5px;
+    height: 100px;
+    background-color:white;
+  }
+  .mat-icon {
+    @include mat-icon(40px);
+  }
+  .border-top {
+    border-top: 1px solid white;
+  }
+  .mat-headline {
+    @include mat-headline();
+  }
+  .mat-body-1{
+    @include mat-headline();
+  }
+}
+.nav-item {
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: default;
+
+  &:hover {
+    transform: translate(0, -8px);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, .16)
+  }
+}
+@mixin dashboard-profile($theme) {
+
+  .profile-card-holder{
+    margin: 10px 5px;
+    min-height: 300px;
+    box-sizing: border-box;
+    color:#f5f0f0f2;
+
+    .profile-details{
+      background-image: -webkit-linear-gradient(45deg, mat-color($primary,400) 45%, mat-color($primary,300)  45%);
+      margin-top:-50px;
+      min-height: 242px;
+
+      & .profile-details-holder{
+        margin-top: 70px;
+      }
+    }
+    .center-align{
+      text-align: center;
+    }
+    .Follow{
+      width: 70%;
+    }
+    & .banner {
+      background-size: screen;
+      min-height: 56px;
+      background-repeat: no-repeat;
+      color: white;
+      & img {
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .profile-card-content{
+      padding: 10px;
+    }
+  }
+}
+.nav-item {
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: default;
+
+  &:hover {
+    transform: translate(0, -8px);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, .16)
+  }
+}
+
+
+@mixin round-progressbar($theme) {
+  .round-progressbar {
+    margin: 10px 5px;
+    padding: 10px;
+    background-color:white;
+
+    & .header {
+      text-align: center;
+      color:white;
+    }
+    & .roundholder{
+      position: absolute;
+
+      & .current{
+        position: relative;
+      }
+    }
+    .progress-wrapper {
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .current {
+      position: absolute;
+      font-weight: 100;
+      line-height: 1;
+      font-size: 32px;
+      color: white;
+    }
+
+    round-progress {
+      margin: auto;
+    }
+  }
+}
+@mixin sales-list($theme) {
+
+  .sales-list{
+    margin: 10px 5px;
+    background: white;
+  }
+  .pull-right{
+    flex: 1 1 auto;
+  }
+  mat-list-item:hover {
+    background: #e8eaf6;
+    cursor: pointer;
+  }
+  .mat-chip {
+    padding: 1px 13px;
+  }
+
+}
+.nav-item {
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: default;
+
+  &:hover {
+    transform: translate(0, -8px);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, .16)
+  }
+}
+
+@mixin auth($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+
+  .sidenav{
+    background: mat-color($primary,400);
+    overflow: hidden;
+    position: relative;
+    width: 250px;
+  }
+  .drawer{
+    background: mat-color($primary,400);
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+  }
+  [no-over-flow] {
+    overflow: hidden;
+  }
+  .router-outlet{
+    position: relative;padding: 0px 5px;
+  }
+  .spacer {
+    width: 100%;
+  }
+
+  .logo{
+    font-size: 26px;font-family: Roboto;color:white;margin-top: 8px;
+  }
+}
+
+
+/* bottom*/
+$mat-light-theme-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: map_get($mat-indigo, 50),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: $black-12-opacity,
+  raised-button: white,
+  focused-button: $black-6-opacity,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+@include mat-core();
+
+$primary : $mat-indigo;
+$accent  : $mat-orange;
+$warn    : $mat-red;
+
+
+
+$primary-app-primary: mat-palette($primary , 400);
+$primary-app-accent:  mat-palette($accent , 900);
+$primary-app-warn:    mat-palette($warn );
+$cdk-theme:   mat-light-theme($primary-app-primary, $primary-app-accent,$primary-app-warn);
+
+cdk-sidemenu{
+  $sidemenu-app-primary: mat-palette($primary , 400);
+  $sidemenu-app-accent:  mat-palette($accent , 900);
+  $sidemenu-app-warn:    mat-palette($warn );
+  $cdk-sidemenu-theme:   mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent,$sidemenu-app-warn);
+  @include mat-list-theme($cdk-sidemenu-theme);
+}
+
+
+cdk-sidemenu-item{
+  @include sidemenu-item($cdk-theme,20px)
+}
+
+
+cdk-dashcard {
+  $dashcard-primary: mat-palette($primary);
+  $dashcard-accent:  mat-palette($accent);
+  $dashcard-warn:    mat-palette($warn);
+  $dashcard-theme:   mat-dark-theme($dashcard-primary, $dashcard-accent,$dashcard-warn);
+  @include dashcard($dashcard-theme);
+}
+
+cdk-profile-card{
+  $dashboard-profile-primary: mat-palette($primary , 400);
+  $dashboard-profile-accent:  mat-palette($accent , 900);
+  $dashboard-profile-warn:    mat-palette($warn );
+  $cdk-dashboard-profile-theme:   mat-dark-theme($dashboard-profile-primary, $dashboard-profile-accent,$dashboard-profile-warn);
+  @include dashboard-profile($cdk-dashboard-profile-theme);
+  @include mat-tabs-theme($cdk-dashboard-profile-theme);
+}
+@include angular-material-theme($cdk-theme);
+@include auth($cdk-theme);
+@include round-progressbar($cdk-theme);
+@include sales-list($cdk-theme);
+
+html {
+  //height:100%;
+}
+body{
+  padding: 0px !important;
+  margin: 0px !important;
+  //height:100%;
+}
+.components-container-gt-xs {
+  padding: 20px;
+  // background-color: #fdfdfd;
+}
+.components-container-xs {
+  padding: 5px !important;
+  // background-color: #fdfdfd;
+}
+.component-preview {
+  padding: 20px;
+}
+.ps-content {
+  height: 100%;
+}
+
+.loader-container {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  position: absolute;
+
+  -moz-animation: cssAnimation 1s ease-in 3s forwards;
+  /* Firefox */
+  animation: cssAnimation 1s ease-in 3s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 1s ease-in 3s forwards;
+  /* Opera */
+  animation: cssAnimation 1s ease-in 3s forwards;
+  animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  to {
+    opacity:0;
+    display: none;
+    visibility:hidden;
+  }
+}
+@keyframes cssAnimation {
+  to {
+    visibility:hidden;
+    opacity:0;
+    display: none;
+  }
+}
+
+
+
+.spinner {
+  margin: 50vh auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+
+
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.bounce3 {
+  background-color: orange;
+}
+
+.spinner .bounce1 {
+  background-color: blue;
+  animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  background-color: red;
+  animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { transform: scale(0) }
+  40% { transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    transform: scale(0);
+  } 40% {
+      transform: scale(1.0);
+      transform: scale(1.0);
+    }
+}
