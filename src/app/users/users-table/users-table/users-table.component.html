@@ -1,3 +1,65 @@
-<p>
-  users-table works!
-</p>
+<div class="table_data mat-elevation-z8">
+
+  <div class="table-search">
+    <app-table-search [dataSource]="dataSource"></app-table-search>
+  </div>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-table class="users-table"
+             [dataSource]="dataSource"
+             matSort
+             matSortActive="email"
+             matSortDirection="asc"
+  >
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="registration">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Registration</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let data">{{data.registration}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="verification">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Verification</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let data">{{data.verification}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="membership">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Membership</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let data">{{data.membership}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastVisit">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Last visit</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let data">{{data.lastVisit}}</mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"
+             (click)="onRowClicked(row)">
+
+    </mat-row>
+
+  </mat-table>
+
+
+  <app-pagination [dataSource]="dataSource"
+                  [pageSize]="pageSize"
+                  [pageSizeOptions]="pageSizeOptions"
+  ></app-pagination>
+</div>
+

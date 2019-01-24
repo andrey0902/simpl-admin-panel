@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersTableComponent } from './users-table/users-table.component';
+import { PaginationModule } from '../../shared/pagination/pagination.module';
+import { MatProgressSpinnerModule, MatSortModule, MatTableModule } from '@angular/material';
+import { TableSearchModule } from '../../shared/table-search/table-search.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,14 @@ import { UsersTableComponent } from './users-table/users-table.component';
     UsersTableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+
+    PaginationModule,
+    TableSearchModule,
+
+    MatTableModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class UsersTableModule { }
