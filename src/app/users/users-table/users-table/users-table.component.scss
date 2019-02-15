@@ -18,3 +18,13 @@
 .users-table {
   min-height: 400px;
 }
+
+.table-row {
+
+  transition: .2s linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e4e4e4;
+  }
+}

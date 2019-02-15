@@ -1,35 +1,34 @@
-import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { UserModel } from '../../shared/core/models/user.model';
 
 @Component({
-  selector: 'cdk-user-menu',
-  templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.scss']
+  selector: 'cdk-user-menu', templateUrl: './user-menu.component.html', styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent implements OnInit {
-	isOpen: boolean = false;
+  isOpen = false;
 
-  	//currentUser = null;
-  	Hari;
-  	
+  @Input() currentUser: UserModel;
+  @Output() onLogOut = new EventEmitter<any>();
 
-  	@Input() currentUser = null;
-  	@HostListener('document:click', ['$event', '$event.target'])
-  	onClick(event: MouseEvent, targetElement: HTMLElement) {
-    	if (!targetElement) {
-     		return;
-    	}
+  constructor(private elementRef: ElementRef) {
+  }
 
-    	const clickedInside = this.elementRef.nativeElement.contains(targetElement);
-    	if (!clickedInside) {
-      		this.isOpen = false;
-    	}
-  	}
-  	
-    
-  	constructor(private elementRef: ElementRef) { }
+  @HostListener('document:click', ['$event', '$event.target']) onClick(event: MouseEvent, targetElement: HTMLElement) {
+    if (!targetElement) {
+      return;
+    }
 
+    const clickedInside = this.elementRef.nativeElement.contains(targetElement);
+    if (!clickedInside) {
+      this.isOpen = false;
+    }
+  }
 
-  	ngOnInit() {
-  	}
+  ngOnInit() {
+  }
+
+  logOut(): void {
+    this.onLogOut.emit();
+  }
 
 }

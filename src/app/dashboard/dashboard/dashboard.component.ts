@@ -51,4 +51,8 @@ export class DashboardComponent implements OnInit, OnChanges {
     // }
   }
 
+  goTo() {
+    console.log('goTo');
+  }
+
 }

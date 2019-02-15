@@ -15,6 +15,11 @@
              matSortDirection="asc"
   >
 
+    <ng-container matColumnDef="name">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.name}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="email">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Email</mat-header-cell>
       <mat-cell *matCellDef="let data">{{data.email}}</mat-cell>
@@ -23,33 +28,37 @@
     <ng-container matColumnDef="registration">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Registration</mat-header-cell>
       <mat-cell class="description-cell"
-                *matCellDef="let data">{{data.registration}}</mat-cell>
+                *matCellDef="let data">{{data.registrationDate | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
 
     </ng-container>
 
     <ng-container matColumnDef="verification">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Verification</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let data">{{data.verification}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="membership">
-      <mat-header-cell mat-sort-header *matHeaderCellDef>Membership</mat-header-cell>
-      <mat-cell class="duration-cell"
-                *matCellDef="let data">{{data.membership}}</mat-cell>
+                *matCellDef="let data">{{data.verificationDate | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastVisit">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Last visit</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let data">{{data.lastVisit}}</mat-cell>
+                *matCellDef="let data">{{data.lastActive | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="membership">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Membership</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let data">{{data.plan.name}}</mat-cell>
+    </ng-container>
 
+    <ng-container matColumnDef="membershipCost">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Membership Cost</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let data">{{data.plan.amount}}</mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-    <mat-row *matRowDef="let row; columns: displayedColumns"
+    <mat-row class="table-row" *matRowDef="let row; columns: displayedColumns"
              (click)="onRowClicked(row)">
 
     </mat-row>

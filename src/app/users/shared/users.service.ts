@@ -4,6 +4,7 @@ import { map } from 'rxjs/internal/operators';
 import { Observable } from 'rxjs/index';
 import { UserTable } from '../../shared/models/user-table.model';
 import { DataResponse } from './model/data-response.mode';
+import { UserModel } from '../../shared/core/models/user.model';
 
 @Injectable()
 export class UsersService {
@@ -23,9 +24,9 @@ export class UsersService {
       );
   }
 
-  prepareUsers(users: any[]): UserTable[] {
+  prepareUsers(users: any[]): UserModel[] {
     return users.map(user => {
-      return new UserTable(user);
+      return new UserModel(user);
     });
   }
 

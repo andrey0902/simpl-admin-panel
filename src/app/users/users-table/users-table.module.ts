@@ -4,6 +4,7 @@ import { UsersTableComponent } from './users-table/users-table.component';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { MatProgressSpinnerModule, MatSortModule, MatTableModule } from '@angular/material';
 import { TableSearchModule } from '../../shared/table-search/table-search.module';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { TableSearchModule } from '../../shared/table-search/table-search.module
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,
+
+    MomentModule,
   ]
 })
 export class UsersTableModule { }
