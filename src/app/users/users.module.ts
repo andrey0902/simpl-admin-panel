@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users/users.component';
-import { UsersTableModule } from './users-table/users-table.module';
-import { MatDialogModule } from '@angular/material';
+import { DEFAULT_PERFECT_SCROLLBAR_CONFIG, UsersTableModule } from './users-table/users-table.module';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { MomentModule } from 'ngx-moment';
+import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
 
@@ -22,6 +24,16 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     UsersTableModule,
 
     MatDialogModule,
+    MatButtonModule,
+
+    MomentModule,
+    PerfectScrollbarModule,
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   entryComponents: [
     UserDetailsComponent

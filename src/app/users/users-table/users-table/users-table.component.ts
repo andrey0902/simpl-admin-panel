@@ -5,6 +5,7 @@ import { MatDialog, MatSort } from '@angular/material';
 import { takeWhile, tap } from 'rxjs/internal/operators';
 import { UserModel } from '../../../shared/core/models/user.model';
 import { UserDetailsComponent } from '../../user-details/user-details.component';
+import { DetailUserModel } from '../../../shared/core/models/detail-user-model';
 
 @Component({
   selector: 'app-users-table',
@@ -20,7 +21,9 @@ export class UsersTableComponent implements AfterViewInit {
 
   componentActive = true;
 
-  constructor(public dataSource: CustomDataSource, public dialog: MatDialog) {
+  constructor(public dataSource: CustomDataSource,
+              public dialog: MatDialog,
+              public userService: UsersService) {
   }
 
   ngAfterViewInit() {
@@ -44,10 +47,14 @@ export class UsersTableComponent implements AfterViewInit {
   }
 
   openDialog(data: UserModel): void {
-    const dialogRef = this.dialog.open(UserDetailsComponent, {
-      data, width: '250px'
-    });
 
+    this.userService.getCurrentUser(data.id)
+      .subscribe((res: DetailUserModel) => {
+        const dialogRef = this.dialog.open(UserDetailsComponent, {
+          data: res,
+          minWidth: '320px'
+        });
+      });
   }
 
 }

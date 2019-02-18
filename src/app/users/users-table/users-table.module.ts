@@ -5,6 +5,15 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { MatProgressSpinnerModule, MatSortModule, MatTableModule } from '@angular/material';
 import { TableSearchModule } from '../../shared/table-search/table-search.module';
 import { MomentModule } from 'ngx-moment';
+import {
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarModule
+} from 'ngx-perfect-scrollbar';
+
+export const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -24,6 +33,13 @@ import { MomentModule } from 'ngx-moment';
     MatProgressSpinnerModule,
 
     MomentModule,
-  ]
+    PerfectScrollbarModule,
+],
+providers: [
+  {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }
+]
 })
 export class UsersTableModule { }

@@ -28,20 +28,20 @@
     <ng-container matColumnDef="registration">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Registration</mat-header-cell>
       <mat-cell class="description-cell"
-                *matCellDef="let data">{{data.registrationDate | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
+                *matCellDef="let data">{{data.registrationDate | amDateFormat: 'HH:mm DD-MM-YYYY'}}</mat-cell>
 
     </ng-container>
 
     <ng-container matColumnDef="verification">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Verification</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let data">{{data.verificationDate | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
+                *matCellDef="let data">{{data.verificationDate | amDateFormat: 'HH:mm DD-MM-YYYY'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastVisit">
       <mat-header-cell mat-sort-header *matHeaderCellDef>Last visit</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let data">{{data.lastActive | amDateFormat: 'mm:HH DD-MM-YYYY'}}</mat-cell>
+                *matCellDef="let data">{{data.lastActive | amDateFormat: 'HH:mm DD-MM-YYYY'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="membership">

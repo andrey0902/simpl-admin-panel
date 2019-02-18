@@ -1,0 +1,15 @@
+
+.list-filters {
+
+  .item-filter {
+
+
+  }
+}
+.list-filters .item-filter .mat-expansion-panel-body {
+  padding: 16px 24px 16px;
+}
+
+.list-filters .active-filter .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+  color: #e6690a;
+}

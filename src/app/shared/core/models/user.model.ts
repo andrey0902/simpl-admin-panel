@@ -26,7 +26,7 @@ export class UserModel {
   }
 }
 
-class Account {
+export class Account {
   currency: string;
   address: string ;
   city: any;

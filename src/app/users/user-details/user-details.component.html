@@ -1,15 +1,143 @@
-<h2 mat-dialog-title>User Details</h2>
+<h2 mat-dialog-title class="popup-title">All Info</h2>
 <mat-dialog-content>
-  <div class="content-details">
-    <p class="content-data">
-      User name: <span>{{user.name}}</span>
-    </p>
-    <p class="content-data">
-      User email: <span>{{user.email}}</span>
-    </p>
+  <div class="row-wrap">
+
+    <div class="content-wrap">
+      <div class="title">
+        User details
+      </div>
+      <p class="content-data">
+        <span class="details-text">User name:</span>
+        <span class="details-content">{{user.name}}</span>
+      </p>
+      <p class="content-data">
+        <span class="details-text">User email:</span>
+        <span class="details-content">{{user.email}}</span>
+      </p>
+
+      <p class="content-data">
+        <span class="details-text">Registration:</span>
+        <span class="details-content">{{user.registrationDate | amDateFormat: 'HH:mm DD-MM-YYYY'}}</span>
+      </p>
+      <p class="content-data">
+        <span class="details-text">Verification:</span>
+        <span class="details-content">{{user.verificationDate | amDateFormat: 'HH:mm DD-MM-YYYY'}}</span>
+      </p>
+      <p class="content-data">
+        <span class="details-text">Last visit:</span>
+        <span class="details-content">{{user.lastActive | amDateFormat: 'HH:mm DD-MM-YYYY'}}</span>
+      </p>
+  </div>
+
+    <ng-container
+      *ngTemplateOutlet="user.currentPlan.trial ? trial: subscription">
+    </ng-container>
+
+  </div>
+
+  <div class="row-wrap">
+    <div class="content-wrap">
+      <div class="title">
+        Next membership
+      </div>
+
+      <ng-container *ngIf="user.nextPlan; else noNextPlan">
+        <p class="content-data">
+          <span class="details-text">Membership level:</span>
+          <span class="details-content">{{user.nextPlan.name}}</span>
+        </p>
+        <p class="content-data">
+          <span class="details-text">Payment plan:</span>
+          <span class="details-content">{{user.nextPlan.amount}}</span>
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="content-wrap">
+      <div class="title">
+        History membership
+      </div>
+      <ng-container *ngIf="user.historyPlans; else noHistory">
+        <perfect-scrollbar style="height: 135px">
+          <div class="history-item" *ngFor="let history of user.historyPlans">
+            <p class="content-data">
+              <span class="details-text">Membership level:</span>
+              <span class="details-content">{{history.name}}</span>
+            </p>
+            <p class="content-data">
+              <span class="details-text">Membership payment plan:</span>
+              <span class="details-content">{{history.amount}}</span>
+            </p>
+            <p class="content-data">
+              <span class="details-text">Membership period:</span>
+              <span class="details-content">{{history.period}}</span>
+            </p>
+          </div>
+        </perfect-scrollbar>
+      </ng-container>
+    </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button mat-raised-button mat-dialog-close>Close</button>
 </mat-dialog-actions>
+
+
+<ng-template #subscription>
+  <div class="content-wrap">
+    <div class="title">
+      Membership details
+    </div>
+
+    <p class="content-data">
+      <span class="details-text">Current membership level:</span>
+      <span class="details-content">{{user.currentPlan?.plan?.name}}</span>
+    </p>
+    <p class="content-data">
+      <span class="details-text">Current plan's cost:</span>
+      <span class="details-content">{{user.currentPlan?.plan?.amount}}</span>
+    </p>
+    <p class="content-data">
+      <span class="details-text">Has access to dashboard until:</span>
+      <span class="details-content">{{user.currentPlan.endTime}}</span>
+    </p>
+
+    <p class="content-data">
+      <span class="details-text">Auto subscription is active:</span>
+      <span class="details-content">{{user.currentPlan.cancelled}}</span>
+    </p>
+  </div>
+
+</ng-template>
+
+<ng-template #trial>
+  <div class="content-wrap">
+    <div class="title">
+      Membership details
+    </div>
+    <p class="content-data">
+      <span class="details-text">Subscription trial:</span>
+      <span class="details-content">{{user.currentPlan.trial}}</span>
+    </p>
+
+    <p class="content-data">
+      <span class="details-text">Trial subscription will end:</span>
+      <span class="details-content">{{user.currentPlan.endTime}}</span>
+    </p>
+  </div>
+
+</ng-template>
+
+<ng-template #noNextPlan>
+  <p class="content-data">
+    <span class="details-text">Next membership is:</span>
+    <span class="details-content">{{"-"}}</span>
+  </p>
+</ng-template>
+
+<ng-template #noHistory>
+  <p class="content-data">
+    <span class="details-text">List membership history:</span>
+    <span class="details-content">{{"-"}}</span>
+  </p>
+</ng-template>

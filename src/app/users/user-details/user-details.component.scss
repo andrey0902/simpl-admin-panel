@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+.popup-title {
+  color: $accent-gray;
+  font-family: AvenirHeavy;
+  font-size: 18px;
+  margin: 0;
+  border-bottom: 1px solid #eceef5;
+}
+
+.details-text {
+  color: $light-gray;
+  font-family: AvenirHeavy;
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.details-content {
+  font-family: AvenirRoman;
+  color: $light-gray;
+  font-size: 13px;
+}
+
+.title {
+  color: $accent-gray;
+  font-family: AvenirHeavy;
+  font-size: 16px;
+  //text-align: center;
+  padding: 15px 0 10px 0;
+}
+
+.row-wrap {
+  display: flex;
+  border-bottom: 1px solid #eceef5;
+}
+
+.content-wrap {
+  min-width: 300px;
+}
+
+.history-item {
+  border-bottom: 1px solid #eceef5;
+
+  &:last-child {
+    border-bottom: transparent;
+    padding-bottom: 10px;
+  }
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,71 @@
+@import "variables";
+
+mat-form-field {
+  input {
+    color: $gray-text !important;
+  }
+}
+
+.mat-input-element {
+  line-height: 20px !important;
+}
+
+.item-filter.mat-expansion-panel-spacing {
+  .mat-expansion-indicator.ng-trigger.ng-trigger-indicatorRotate.ng-star-inserted:after {
+    color: $orange;
+  }
+}
+
+.mat-error {
+  font-family: AvenirRoman;
+  font-size: 11px;
+}
+
+.snotify {
+  font-family: AvenirRoman;
+}
+
+
+/*override material form field style active*/
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: $orange;
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #f44336;
+}
+
+.mat-form-field.mat-focused .mat-form-field-underline {
+
+  .mat-form-field-ripple{
+    background-color: $orange;
+  }
+    background-color: $orange;
+}
+
+
+.mat-tooltip {
+  overflow: visible !important;
+}
+
+.triangle {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 50%;
+    bottom: -1px;
+    transform: translateY(90%);
+    border: 5px solid transparent;
+    border-top: 5px solid rgba(97, 97, 97, 0.9);
+    transition: 10s easy;
+  }
+}
+
+odds-info-card {
+  .mat-card-header-text {
+    margin: 0 !important;
+  }
+}
+
