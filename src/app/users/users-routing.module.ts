@@ -15,7 +15,7 @@ import { UsersTableComponent } from './users-table/users-table/users-table.compo
         component: UsersComponent,
         children: [
           {
-            path: 'users',
+            path: '',
             component: UsersTableComponent
           }
         ]

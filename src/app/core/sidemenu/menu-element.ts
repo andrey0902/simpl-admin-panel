@@ -2,7 +2,7 @@ export const menus = [
     {
         'name': 'Users',
         'icon': 'person',
-        'link': '/admin/users',
+        'link': '/users',
         'open': true,
     }
   //   {

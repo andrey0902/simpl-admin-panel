@@ -11,6 +11,7 @@ export class UserModel {
   public registrationDate?: string;
   public verificationDate?: string;
   public lastActive?: string;
+  public role: string;
 
   constructor(data) {
     this.id = data.id ? data.id : null;
@@ -23,6 +24,7 @@ export class UserModel {
     this.registrationDate = data.registration_time;
     this.verificationDate = data.email_verification_time;
     this.lastActive = data.last_activity_time;
+    this.role = data.role;
   }
 }
 

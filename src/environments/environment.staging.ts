@@ -3,4 +3,5 @@ export const environment = {
   basePath: 'https://app-staging.oddstribe.co.uk/',
   basePathApi: 'https://app-staging.oddstribe.co.uk/api/',
   WS: 'wss://app-staging.oddstribe.co.uk/api/v1/cable',
+  redirectPath: 'https://app-staging.oddstribe.co.uk/',
 };

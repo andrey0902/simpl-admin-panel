@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   basePath: 'http://localhost:3001/',
   basePathApi: 'http://localhost:3001/api/', /*172.16.101.53*/
-  WS: 'ws://localhost:3001/api/v1/cable'
+  WS: 'ws://localhost:3001/api/v1/cable',
+  redirectPath: 'http://localhost:4201/#/auth/sign-in/',
 };

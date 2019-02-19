@@ -2,7 +2,9 @@ import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 import { UserModel } from '../../shared/core/models/user.model';
 
 @Component({
-  selector: 'cdk-user-menu', templateUrl: './user-menu.component.html', styleUrls: ['./user-menu.component.scss']
+  selector: 'cdk-user-menu',
+  templateUrl: './user-menu.component.html',
+  styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent implements OnInit {
   isOpen = false;

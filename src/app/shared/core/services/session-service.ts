@@ -10,7 +10,6 @@ export class SessionService {
    * get user from local storage
    * */
   public static getUser() {
-    console.log('getUser', localStorage.getItem('odds.user'));
     return JSON.parse(localStorage.getItem('odds.user'));
   }
 

@@ -4,7 +4,9 @@ import { ProfileService } from '../../shared/core/services/profile.service';
 import { AuthCoreService } from '../../shared/core/services/auth-core.service';
 
 @Component({
-  selector: 'cdk-toolbar', templateUrl: './toolbar.component.html', styleUrls: ['./toolbar.component.scss']
+  selector: 'cdk-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
 
@@ -16,7 +18,8 @@ export class ToolbarComponent implements OnInit {
   searchOpen = false;
   toolbarHelpers = ToolbarHelpers;
 
-  constructor(public profileService: ProfileService, public authCoreService: AuthCoreService) {
+  constructor(public profileService: ProfileService,
+              public authCoreService: AuthCoreService) {
   }
 
   ngOnInit() {

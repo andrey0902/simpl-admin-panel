@@ -9,6 +9,7 @@ const route: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
+      {path: '', redirectTo: '/users', pathMatch: 'full'},
       {
         path: 'users',
         component: UsersComponent
